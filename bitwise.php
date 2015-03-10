@@ -17,38 +17,12 @@ else
 
 echo PHP_EOL;
 
-function showPopup1($yesButton, $noButton, $okayButton, $cancelButton)
-{
-	if($yesButton)
-	{
-		echo "YES\n";
-	}
-	 
-	if($noButton)
-	{
-		echo "NO\n";
-	}
-	 
-	if($okayButton)
-	{
-		echo "OK\n";
-	}
-	 
-	if($cancelButton)
-	{
-		echo "CANCEL\n";
-	}
-
-}
-
-showPopup1(false, false, false, true);
-
 define("YES", 1);
 define("NO", 2);
 define("OK", 4);
 define("CANCEL", 8);
 
-function showPopup2($buttons)
+function showPopup($buttons)
 {
 	if($buttons & YES)
 	{
@@ -71,8 +45,9 @@ function showPopup2($buttons)
 	}
 }
 
-showPopup2(CANCEL);
+showPopup(CANCEL);
 
+// Manipulate colors
 $color1 = 0xADD8E6;
 $color2 = 0x90ee90;
 
@@ -91,6 +66,7 @@ $g1 = 0x00A600;
 $color1 = $color1 | $g1;
 var_dump(dechex($color1));
 
+//Swipe two vars
 $x = 15;
 $y = 33;
 
@@ -100,9 +76,13 @@ $x ^= $y;
 
 var_dump($x, $y);
 
-var_dump(8 ^ 6);
-var_dump(2 ^ 6);
-var_dump(8 ^ 10);
-var_dump(12 ^ 10);
-var_dump(12 ^ 14);
+//Compute the sign of an integer 
+define('CHAR_BIT', 8);
+$v = -8;
+var_dump(decbin(-8));
+var_dump(decbin(8));
+var_dump(decbin(-1));
+var_dump(-($v < 0));
+var_dump($v >> (PHP_INT_SIZE * CHAR_BIT - 1)); // -1 or 0
+var_dump(($v != 0) | ($v >> (PHP_INT_SIZE * CHAR_BIT - 1)));  // -1, 0, or +1
 

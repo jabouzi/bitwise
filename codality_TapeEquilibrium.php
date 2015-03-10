@@ -1,5 +1,19 @@
 <?php
 
+$A[0] = 3;
+$A[1] = 1;
+$A[2] = 2;
+$A[3] = 4;
+$A[4] = 3;
+
+$min = max($A);
+for($i = 0; $i < count($A) - 1; $i++)
+{
+	$temp = abs(array_sum(array_slice($A, 0, $i+1)) - array_sum(array_slice($A, $i+1)));
+	if  ($temp < $min) $min = $temp;
+}
+echo $min;
+
 /*
 A non-empty zero-indexed array A consisting of N integers is given. Array A represents numbers on a tape.
 

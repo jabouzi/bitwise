@@ -2,8 +2,6 @@
 
 var_dump(PHP_INT_SIZE);
 var_dump(PHP_INT_MAX);
-var_dump(PHP_DOUBLE_SIZE);
-var_dump(PHP_DOUBLE_MAX);
 
 var_dump(decbin(2147483647));
 var_dump(decbin(PHP_INT_MAX));
@@ -12,13 +10,13 @@ var_dump(~0b111111111111111111111111111111111111111111111111111111111111111);
 var_dump(0b101);
 var_dump(~0b101);
 
-print "\n Signed 32-bit integer positive overflow test:\n";
+print "\n Signed 64-bit integer positive overflow test:\n";
 $integerLimit =  PHP_INT_MAX; 
 $integerOverflow = intval(PHP_INT_MAX + 1);
 print "    Integer upper limit: "; var_dump($integerLimit);
 print "   Upper limit overflow: "; var_dump($integerOverflow);
 
-print "\n Signed 32-bit integer positive overflow test:\n";
+print "\n Signed 64-bit integer positive overflow test:\n";
 $integerLimit =  -PHP_INT_MAX;
 $integerOverflow = - PHP_INT_MAX - 1 - 1;
 print "    Integer lower limit: "; var_dump($integerLimit);
