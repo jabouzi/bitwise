@@ -2,9 +2,9 @@
 
 //$A = [0,0,4,2,4,5];
 
-$A[0] = 4;
-$A[1] = 1;
-$A[2] = 3;
+//$A[0] = 4;
+//$A[1] = 1;
+//$A[2] = 3;
 //$A[3] = 2;
 
 //$A[0] = 1000000000;
@@ -29,34 +29,16 @@ $A[2] = 3;
     //1 => 2
 //);
 
-var_dump(solution($A));
+//var_dump(solution($A));
 //print_r(counting($A));
 
-//function solution($A)
-//{
-	//$B = counting($A);
-	//var_dump($B);
-	//$neq = 0;
-	//for($i = 1; $i < count($B); $i++)
-	//{
-		//if ($A[$i] != $A[($i+1)]) $neq++; 
-	//}
-	//if (!$neq) return 1;
-	//return 0;
-//}
 function solution($A)
 {
-	$C = [];
-	for($i = 1; $i <= count($A); $i++) $C[$i] = 0;
-	foreach ($A as $item) {
-		if (isset($C[$item])) {
-			if ($C[$item] > 0) return 0;
-			else $C[$item]++;
-		} else {
-			$C[$item] = 1;
-		}
+	$B = counting($A);
+	for($i = 1; $i < count($B); $i++)
+	{
+		if ($B[$i] != 1) return 0;
 	}
-	print_r($C);
 	return 1;
 }
 
@@ -74,6 +56,21 @@ function counting($A)
 	
 	return $C;
 }
+
+//function solution($A)
+//{
+	//$C = [];
+	//for($i = 1; $i <= count($A); $i++) $C[$i] = 0;
+	//foreach ($A as $item) {
+		//if (isset($C[$item])) {
+			//$C[$item]++;
+		//} else {
+			//$C[$item] = 1;
+		//}
+	//}
+	//print_r($C);
+	//return 1;
+//}
 
 /*
 A non-empty zero-indexed array A consisting of N integers is given.
