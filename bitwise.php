@@ -1,5 +1,7 @@
 <?php
 
+echo 8 >> 1;
+
 //echo 0b101;
 //echo 0b101 & 0b010;
 var_dump(3 & 1);
