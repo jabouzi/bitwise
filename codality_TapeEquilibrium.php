@@ -1,17 +1,51 @@
 <?php
 
-$A[0] = 3;
-$A[1] = 1;
-$A[2] = 2;
-$A[3] = 4;
-$A[4] = 3;
+//
+//$A[0] = 3;
+//$A[1] = 1;
+//$A[2] = 2;
+//$A[3] = 4;
+//$A[4] = 3;
 
-$min = max($A);
-for($i = 0; $i < count($A) - 1; $i++)
+$A[0] = -1000;
+$A[1] = 1000;
+//
+//$A[0] = 5;
+//$A[1] = 6;
+//$A[2] = 2;
+//$A[3] = 4;
+//$A[4] = 1;
+
+//$A[0] = -10;
+//$A[1] = -5;
+//$A[2] = -3;
+//$A[3] = -4;
+//$A[4] = -5;
+
+//$A[0] = -10;
+//$A[1] = -20;
+//$A[2] = -30;
+//$A[3] = -40;
+//$A[4] = 100;
+
+
+$part1 = $A[0];
+$part2 = 0;
+for($i = 1; $i < count($A); $i++)
 {
-	$temp = abs(array_sum(array_slice($A, 0, $i+1)) - array_sum(array_slice($A, $i+1)));
-	if  ($temp < $min) $min = $temp;
+	$part2 += $A[$i];
 }
+
+$min = abs($part1 - $part2);
+
+for($i = 1; $i < count($A) - 1; $i++)
+{
+	$part1 += $A[$i];
+	$part2 -= $A[$i];
+	$diff = abs($part1 - $part2);
+	if ($min > $diff) $min = $diff;
+}
+
 echo $min;
 
 /*
