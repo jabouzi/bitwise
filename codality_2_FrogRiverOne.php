@@ -1,4 +1,56 @@
+<?php
 
+//$A[0] = 1;
+//$A[1] = 3;
+//$A[2] = 1;
+//$A[3] = 4;
+//$A[4] = 2;
+//$A[5] = 3;
+//$A[6] = 5;
+//$A[7] = 4;
+
+
+    //$A[0] = 1;
+    //$A[1] = 3;
+    //$A[2] = 1;
+    //$A[3] = 3;
+    //$A[4] = 2;
+    //$A[5] = 1;
+    //$A[6] = 3;
+    
+$A = array
+(
+    0 => 1
+);
+
+function solution($X, $A) {
+    $T = -1;
+    $B = [];
+    $S = 0;
+    $C = 0;
+    if (count($A) == 1) return -1;
+    for($i = 0; $i < count($A); $i++)
+    {
+		if (!isset($B[$A[$i]]))
+		{
+			$B[$A[$i]] = 1;
+			$S += $A[$i];
+			$C++;
+			if ($C == $X)
+			{
+				$T = $i;
+				break;
+			}
+		}
+	}
+	
+	if (($X+1)*count($B) / 2 == $S) return $T;
+	return -1;
+}
+
+var_dump(solution(1, $A));
+
+/*
 
 A small frog wants to get to the other side of a river. The frog is currently located at position 0, and wants to get to position X. Leaves fall from a tree onto the surface of the river.
 
@@ -51,3 +103,4 @@ Complexity:
         expected worst-case space complexity is O(X), beyond input storage (not counting the storage required for input arguments).
 
 Elements of input arrays can be modified.
+*/
