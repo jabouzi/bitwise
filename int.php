@@ -1,15 +1,5 @@
 <?php
 
-$arr = [2,34, 'aaa', 'bbb'];
-var_dump($arr);
-
-$arr2 = implode('|', $arr);
-var_dump($arr2);
-
-var_dump(explode('|', $arr2));
-
-exit;
-
 var_dump(PHP_INT_SIZE);
 var_dump(PHP_INT_MAX);
 
