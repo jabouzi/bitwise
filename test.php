@@ -5,7 +5,7 @@ $A = [2,3,7,5,1,3,9];
 function mushrooms($A, $k, $m)
 {
 
-	$n = count($A);
+	$n = count($A) - 1;
 	$result = 0;
 	$pref = prefix_sums($A);
 	//echo min($m, $k) + 1;
@@ -14,8 +14,8 @@ function mushrooms($A, $k, $m)
 	{
 		$left_pos = $k - $p;
 		$right_pos = min($n - 1, max($k, $k + $m - 2 * $p));
-		echo $p . ' ' . $left_pos . ' ' . $right_pos . PHP_EOL;
-		$result = max($result, $pref[count($pref) -1] + $left_pos + $right_pos);
+		//echo $p . ' ' . $left_pos . ' ' . $right_pos . PHP_EOL;
+		$result = max($result, count_total($pref, $left_pos, $right_pos));
 		//echo $pref + $left_pos + $right_pos . PHP_EOL;
 	}
 	
@@ -25,15 +25,20 @@ function mushrooms($A, $k, $m)
 	{
 		$right_pos = $k + $p;
 		$left_pos = max(0, min($k, $k - ($m - 2	* $p)));
-		$result = max($result, $pref + $left_pos + $right_pos);
+		$result = max($result, count_total($pref, $left_pos, $right_pos));
 	}
 	
 	return	$result;
 }
 
+function count_total($P, $x, $y)
+{
+	return $P[$y + 1] - $P[$x];
+}
+
 function prefix_sums($A)
 {
-	$n = count($A);
+	$n = count($A) - 1;
 	$P[0] = 0;
 
 	foreach(range(1, $n) as $k)
@@ -42,8 +47,8 @@ function prefix_sums($A)
 		//echo $A[$k - 1].PHP_EOL;
 	}
 	
-	return	end($P);
+	return	$P;
 }
 
-//print_r(prefix_sums($A));
+print_r(prefix_sums($A));
 var_dump(mushrooms($A, 4, 6));
