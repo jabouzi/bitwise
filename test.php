@@ -9,25 +9,26 @@ function mushrooms($A, $k, $m)
 	$pref = prefix_sums($A);
 	//echo min($m, $k) + 1;
 	//echo PHP_EOL;
-	foreach(range(0, min($m, $k) + 1) as $p)
+	foreach(range(0, min($m, $k)) as $p)
 	{
-		echo $p . PHP_EOL;
-		//$left_pos = $k - $p;
-		//$right_pos = min($n - 1, max($k, $k + $m - 2 * $p));
-		//echo $p . ' ' . $left_pos . ' ' . $right_pos . PHP_EOL;
-		//$result = max($result, count_total($pref, $left_pos, $right_pos));
+		//echo $p . PHP_EOL;
+		$left_pos = $k - $p;
+		$right_pos = min($n - 1, max($k, $k + $m - 2 * $p));
+		echo $p . ' ' . $left_pos . ' ' . $right_pos . PHP_EOL;
+		$result = max($result, count_total($pref, $left_pos, $right_pos));
 		//echo $pref + $left_pos + $right_pos . PHP_EOL;
 	}
 	
 	//echo min($m + 1, $n - $k);
 	//echo PHP_EOL;
 	echo "###############\n";
-	foreach(range(0, min($m + 1, $n - $k)) as $p)
+	foreach(range(0, min($m + 1, $n - $k) - 1) as $p)
 	{
-		echo $p . PHP_EOL;
-		//$right_pos = $k + $p;
-		//$left_pos = max(0, min($k, $k - ($m - 2	* $p)));
-		//$result = max($result, count_total($pref, $left_pos, $right_pos));
+		//echo $p . PHP_EOL;
+		$right_pos = $k + $p;
+		$left_pos = max(0, min($k, $k - ($m - 2	* $p)));
+		echo $p . ' ' . $left_pos . ' ' . $right_pos . PHP_EOL;
+		$result = max($result, count_total($pref, $left_pos, $right_pos));
 	}
 	
 	return	$result;
@@ -40,7 +41,7 @@ function count_total($P, $x, $y)
 
 function prefix_sums($A)
 {
-	$n = count($A) - 1;
+	$n = count($A);
 	$P[0] = 0;
 
 	foreach(range(1, $n) as $k)
