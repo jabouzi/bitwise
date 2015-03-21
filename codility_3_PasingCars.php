@@ -1,5 +1,46 @@
+<?php
 
+$A = [0,1,0,1,1];
+var_dump(solution($A));
+$A = [0,1,0,1,1,0,1];
+var_dump(solution($A));
+$A = [0,0,0,1,1,1];
+var_dump(solution($A));
+$A = [1,1,1, 0,0,0];
+var_dump(solution($A));
+$A = [0,0,0,1,1,1,0,1,0,1,1,0,1,0,1,0,1,1];
+var_dump(solution($A));
 
+//print_r(prefix_sums($A));
+
+function solution($A)
+{
+	$zeros = 0;
+	$count = 0;
+	for($i = 0; $i < count($A); $i++)
+	{
+		if ($A[$i] == 0) $zeros++;
+		else $count += $zeros;
+		
+		if ($count > 1000000000) return -1;
+	}
+	
+	return $count;
+}
+
+function prefix_sums($A)
+{
+	$n = count($A);
+	$P[0] = 0;
+
+	foreach(range(1, $n) as $k)
+	{
+		$P[$k] = $P[($k - 1)] + $A[($k - 1)];
+	}
+	
+	return	$P;
+}
+/*
 A non-empty zero-indexed array A consisting of N integers is given. The consecutive elements of array A represent consecutive cars on a road.
 
 Array A contains only 0s and/or 1s:
@@ -48,3 +89,4 @@ Complexity:
         expected worst-case space complexity is O(1), beyond input storage (not counting the storage required for input arguments).
 
 Elements of input arrays can be modified.
+*/

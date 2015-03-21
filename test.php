@@ -47,7 +47,6 @@ function prefix_sums($A)
 	foreach(range(1, $n) as $k)
 	{
 		$P[$k] = $P[($k - 1)] + $A[($k - 1)];
-		//echo $A[$k - 1].PHP_EOL;
 	}
 	
 	return	$P;
