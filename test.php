@@ -2,6 +2,39 @@
 
 $A = [2,3,7,5,1,3,9];
 
+$X = 0;
+$Y = 1;
+$C = (count($A)*(count($A) - 1)) / 2;
+$B = [];
+for($i = 0; $i < $C; $i++)
+{
+	echo $X.', '.$Y.PHP_EOL;
+	if (($Y - $X) == 1)
+	{
+		$B[$X.'-'.$Y] = ($A[$X] + $A[$Y]) / 2;
+	}
+	else
+	{
+		$B[$X.'-'.$Y] = ($B[$X.'-'.($Y -1)] * ($Y-2+$X) + $A[$X] + $A[$Y]) / ($Y - $X + 1);
+	}
+	
+	if ($Y < count($A) - 1)
+	{
+		$Y++;
+		//$X++;
+	}
+	else
+	{
+		$X++;
+		$Y = $X + 1;
+	}
+}
+
+print_r($B);
+
+
+exit;
+
 function mushrooms($A, $k, $m)
 {
 	$n = count($A);
