@@ -1,4 +1,46 @@
-A non-empty zero-indexed array A consisting of N integers is given. A pair of integers (P, Q), such that 0 ≤ P < Q < N, is called a slice of array A (notice that the slice contains at least two elements). The average of a slice (P, Q) is the sum of A[P] + A[P + 1] + ... + A[Q] divided by the length of the slice. To be precise, the average equals (A[P] + A[P + 1] + ... + A[Q]) / (Q − P + 1).
+<?php
+
+function solution($A) {
+    $X = 0;
+	$Y = 1;
+	$M1 = PHP_INT_MAX;
+	$M2 = count($A);
+	$C = (count($A)*(count($A) - 1)) / 2;
+	$B = [];
+	for($i = 0; $i < $C; $i++)
+	{
+		if (($Y - $X) == 1)
+		{
+			$B[$X.'-'.$Y] = ($A[$X] + $A[$Y]) / 2;
+		}
+		else
+		{
+			$B[$X.'-'.$Y] = ($B[$X.'-'.($Y -1)] * (($Y-1) - $X + 1) + $A[$Y]) / ($Y - $X + 1);
+		}
+		
+		if ($B[$X.'-'.$Y] < $M1)
+		{
+			$M2 = $X;
+			$M1 = $B[$X.'-'.$Y];
+		}
+		
+		if ($Y < count($A) - 1)
+		{
+			$Y++;
+		}
+		else
+		{
+			$X++;
+			$Y = $X + 1;
+		}
+	}
+
+	return $M2;
+
+}
+
+
+/*A non-empty zero-indexed array A consisting of N integers is given. A pair of integers (P, Q), such that 0 ≤ P < Q < N, is called a slice of array A (notice that the slice contains at least two elements). The average of a slice (P, Q) is the sum of A[P] + A[P + 1] + ... + A[Q] divided by the length of the slice. To be precise, the average equals (A[P] + A[P + 1] + ... + A[Q]) / (Q − P + 1).
 
 For example, array A such that:
 
@@ -41,5 +83,4 @@ Complexity:
 
 expected worst-case time complexity is O(N);
 expected worst-case space complexity is O(N), beyond input storage (not counting the storage required for input arguments).
-Elements of input arrays can be modified.
-
+Elements of input arrays can be modified.*/
