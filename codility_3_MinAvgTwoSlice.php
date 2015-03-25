@@ -1,6 +1,7 @@
 <?php
 
 //http://k2code.blogspot.in/2012/01/given-integer-array-and-number-x-find.html
+//https://www.google.ca/search?q=get+array+pairs+O(n)&oq=get+array+pairs+O(n)
 
 function solution($A) {
     $X = 0;
