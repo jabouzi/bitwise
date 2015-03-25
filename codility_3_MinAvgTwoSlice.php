@@ -1,5 +1,7 @@
 <?php
 
+//http://k2code.blogspot.in/2012/01/given-integer-array-and-number-x-find.html
+
 function solution($A) {
     $X = 0;
 	$Y = 1;
